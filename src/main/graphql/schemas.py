@@ -1,6 +1,18 @@
 import strawberry
+from typing import List
+from space_exploration_common_lib.model.Astronaut import Astronaut
 from space_exploration_common_lib.model.mission.ProjectMercury import Mission
 from space_exploration_common_lib.model.Duration import Duration
+
+
+@strawberry.experimental.pydantic.type(model=Astronaut)
+class AstronautType:
+    """ Astronaut type"""
+    first_name: str
+    last_name: str
+    programs: List[str]
+    missions: List[str]
+    image_url: str
 
 
 @strawberry.experimental.pydantic.type(model=Duration, all_fields=True)

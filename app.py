@@ -31,7 +31,7 @@ def main():
             logger.warning(f"Environment variable {var} is not set")
     logger.info('Logger configured')
     logger.info('Starting FastAPI application')
-    uvicorn.run(app, port=8080, host='0.0.0.0', access_log=False)
+    uvicorn.run(app, port=8081, host='0.0.0.0', access_log=False)
 
 
 @app.get('/test/logging')
