@@ -44,6 +44,19 @@ def missions(self) -> List[MissionType]:
     return result
 
 
+def astronauts(self) -> List[AstronautType]:
+    """Get all astronauts from program"""
+    result = []
+    for entity in DbClient.db.astronauts.find():
+        result.append(AstronautType(
+            astronaut_first_name=entity.get('astronaut_first_name'),
+            astronaut_last_name=entity.get('astronaut_last_name'),
+            image_url=entity.get('image_url'),
+            missions=entity.get('missions')
+        ))
+    return result
+
+
 def missions_by_program(self, program: str) -> List[MissionType]:
     """Get all missions from program"""
     result_set = DbClient.db.missions.find({'program': program})
@@ -93,5 +106,6 @@ class Query:
     """Query type for the GraphQL schema"""
     programs: List[ProgramType] = strawberry.field(resolver=programs)
     missions: List[MissionType] = strawberry.field(resolver=missions)
+    astronauts: List[AstronautType] = strawberry.field(resolver=astronauts)
     missions_by_program: List[MissionType] = strawberry.field(resolver=missions_by_program)
     astronauts_by_mission: List[AstronautType] = strawberry.field(resolver=astronauts_by_mission)
