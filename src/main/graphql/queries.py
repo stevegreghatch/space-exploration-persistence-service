@@ -10,6 +10,7 @@ def programs(self) -> List[ProgramType]:
     for entity in DbClient.db.programs.find():
         result.append(ProgramType(
             program=entity.get('program'),
+            missions=entity.get('missions'),
             image_url=entity.get('image_url')
         ))
     return result
@@ -31,15 +32,19 @@ def missions(self) -> List[MissionType]:
             program=entity.get('program'),
             call_sign=entity.get('call_sign'),
             image_url=entity.get('image_url'),
-            spacecraft_number=entity.get('spacecraft_number'),
-            launch_time=entity.get('launch_time'),
+            launch_date_utc=entity.get('launch_date_utc'),
+            launch_mass_lbs=entity.get('launch_mass_lbs'),
             launch_site=entity.get('launch_site'),
-            duration=duration_list,
+            launch_site_coord=entity.get('launch_site_coord'),
+            launch_vehicle=entity.get('launch_vehicle'),
             orbits=entity.get('orbits'),
-            apogee_mi=entity.get('apogee_mi'),
-            perigee_mi=entity.get('perigee_mi'),
-            velocity_max_mph=entity.get('velocity_max_mph'),
-            miss_mi=entity.get('miss_mi')
+            apogee_nmi=entity.get('apogee_nmi'),
+            perigee_nmi=entity.get('perigee_nmi'),
+            landing_date_utc=entity.get('landing_date_utc'),
+            landing_site=entity.get('landing_site'),
+            landing_site_coord=entity.get('landing_site_coord'),
+            recovery_ship=entity.get('recovery_ship'),
+            duration=duration_list
         ))
     return result
 
@@ -74,15 +79,19 @@ def missions_by_program(self, program: str) -> List[MissionType]:
             program=entity.get('program'),
             call_sign=entity.get('call_sign'),
             image_url=entity.get('image_url'),
-            spacecraft_number=entity.get('spacecraft_number'),
-            launch_time=entity.get('launch_time'),
+            launch_date_utc=entity.get('launch_date_utc'),
+            launch_mass_lbs=entity.get('launch_mass_lbs'),
             launch_site=entity.get('launch_site'),
-            duration=duration_list,
+            launch_site_coord=entity.get('launch_site_coord'),
+            launch_vehicle=entity.get('launch_vehicle'),
             orbits=entity.get('orbits'),
-            apogee_mi=entity.get('apogee_mi'),
-            perigee_mi=entity.get('perigee_mi'),
-            velocity_max_mph=entity.get('velocity_max_mph'),
-            miss_mi=entity.get('miss_mi')
+            apogee_nmi=entity.get('apogee_nmi'),
+            perigee_nmi=entity.get('perigee_nmi'),
+            landing_date_utc=entity.get('landing_date_utc'),
+            landing_site=entity.get('landing_site'),
+            landing_site_coord=entity.get('landing_site_coord'),
+            recovery_ship=entity.get('recovery_ship'),
+            duration=duration_list
         ))
     return result
 

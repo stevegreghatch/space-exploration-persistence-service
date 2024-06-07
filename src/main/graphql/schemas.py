@@ -1,4 +1,5 @@
 import strawberry
+
 from space_exploration_common_lib.model.Program import Program
 from space_exploration_common_lib.model.Duration import Duration
 from space_exploration_common_lib.model.Mission import Mission
