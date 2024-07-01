@@ -26,16 +26,6 @@ jobs:
           python -m pip install --upgrade pip setuptools wheel semver
           pip install -r requirements.txt
 
-#      - name: Get latest version from Git tags and increment
-#        id: version
-#        run: |
-#          latest_tag=$(git describe --tags --abbrev=0 2>/dev/null || echo "0.0.0")
-#          new_version=$(python -c "import semver; print(semver.bump_patch('$latest_tag'))")
-#          echo "new_version=$new_version" >> $GITHUB_ENV
-#          echo "VERSION=$new_version" >> $GITHUB_ENV
-#          echo "Latest tag: $latest_tag"
-#          echo "New version: $new_version"
-
       - name: Push new tag
         run: |
           git tag ${{ env.new_version }}
