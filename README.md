@@ -13,12 +13,6 @@ To run the Space Exploration Persistence Service locally, you'll need to set it 
 ### Prerequisites
 
 - Ensure Docker is installed and running on your machine.
-- Clone the necessary repositories:
-
-  ```sh
-  git clone https://github.com/stevegreghatch/Space-Exploration.git
-  git clone https://github.com/stevegreghatch/space-exploration-ui.git
-  ```
 
 ### Setup and Installation
 
