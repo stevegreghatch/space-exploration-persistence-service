@@ -35,14 +35,6 @@ To run the Space Exploration Persistence Service locally, you'll need to set it 
    docker run -d --network my-network -p 8000:8000 --name persistence-service persistence-service:latest
    ```
 
-4. **Run the Data Service**:
-
-   Follow the instructions in the [Space Exploration Data Service repository](https://github.com/stevegreghatch/Space-Exploration) to set up and run the data service.
-
-5. **Run the Frontend**:
-
-   Follow the instructions in the [Space Exploration UI repository](https://github.com/stevegreghatch/space-exploration-ui) to set up and run the frontend.
-
 ## Project Links
 
 - **Data Service**: [Space Exploration Service](https://github.com/stevegreghatch/Space-Exploration)
