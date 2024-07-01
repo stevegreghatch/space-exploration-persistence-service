@@ -4,11 +4,11 @@ This service facilitates GraphQL communication between the database and various 
 
 ## Overview
 
-The Space Exploration Persistence Service acts as an intermediary, enabling efficient data queries and mutations via GraphQL. It integrates seamlessly with the Space Exploration data service and the frontend user interface.
+The Space Exploration Persistence Service acts as an intermediary, enabling efficient data queries and mutations via GraphQL. It integrates seamlessly with the Space Exploration service and the frontend user interface.
 
 ## Running Locally
 
-To run the Space Exploration Persistence Service locally, you'll need to set it up alongside the Space Exploration Data Service and the Space Exploration UI.
+To run the Space Exploration Persistence Service locally, you'll need to set it up alongside the Space Exploration Service and the Space Exploration UI.
 
 ### Prerequisites
 
@@ -45,5 +45,5 @@ To run the Space Exploration Persistence Service locally, you'll need to set it 
 
 ## Project Links
 
-- **Data Service**: [Space Exploration Data Service](https://github.com/stevegreghatch/Space-Exploration)
+- **Data Service**: [Space Exploration Service](https://github.com/stevegreghatch/Space-Exploration)
 - **Frontend UI**: [Space Exploration UI](https://github.com/stevegreghatch/space-exploration-ui)
