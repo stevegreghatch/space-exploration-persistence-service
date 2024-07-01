@@ -1,7 +1,7 @@
 import strawberry
 from typing import List
 from src.main.mongo import DbClient
-from src.main.graphql.schemas import ProgramType, MissionType, DurationType, AstronautType
+from src.main.graphql.schemas import ProgramType, MissionType, DurationType, OrbitType, AstronautType
 
 
 def programs(self) -> List[ProgramType]:
@@ -26,6 +26,20 @@ def missions(self) -> List[MissionType]:
             minutes=entity.get('duration').get('minutes'),
             seconds=entity.get('duration').get('seconds')
         )
+        earth_orbit_list = OrbitType(
+            orbits=entity.get('earth_orbit').get('orbits'),
+            apoapsis_km=entity.get('earth_orbit').get('apoapsis_km'),
+            periapsis_km=entity.get('earth_orbit').get('periapsis_km'),
+            inclination_deg=entity.get('earth_orbit').get('inclination_deg'),
+            period_min=entity.get('earth_orbit').get('period_min')
+        )
+        target_orbit_list = OrbitType(
+            orbits=entity.get('target_orbit').get('orbits'),
+            apoapsis_km=entity.get('target_orbit').get('apoapsis_km'),
+            periapsis_km=entity.get('target_orbit').get('periapsis_km'),
+            inclination_deg=entity.get('target_orbit').get('inclination_deg'),
+            period_min=entity.get('target_orbit').get('period_min')
+        )
         result.append(MissionType(
             mission=entity.get('mission'),
             astronauts=entity.get('astronauts'),
@@ -37,14 +51,13 @@ def missions(self) -> List[MissionType]:
             launch_site=entity.get('launch_site'),
             launch_site_coord=entity.get('launch_site_coord'),
             launch_vehicle=entity.get('launch_vehicle'),
-            orbits=entity.get('orbits'),
-            apogee_nmi=entity.get('apogee_nmi'),
-            perigee_nmi=entity.get('perigee_nmi'),
             landing_date_utc=entity.get('landing_date_utc'),
             landing_site=entity.get('landing_site'),
             landing_site_coord=entity.get('landing_site_coord'),
             recovery_ship=entity.get('recovery_ship'),
-            duration=duration_list
+            duration=duration_list,
+            earth_orbit=earth_orbit_list,
+            target_orbit=target_orbit_list
         ))
     return result
 
@@ -73,6 +86,20 @@ def missions_by_program(self, program: str) -> List[MissionType]:
             minutes=entity.get('duration').get('minutes'),
             seconds=entity.get('duration').get('seconds')
         )
+        earth_orbit_list = OrbitType(
+            orbits=entity.get('earth_orbit').get('orbits'),
+            apoapsis_km=entity.get('earth_orbit').get('apoapsis_km'),
+            periapsis_km=entity.get('earth_orbit').get('periapsis_km'),
+            inclination_deg=entity.get('earth_orbit').get('inclination_deg'),
+            period_min=entity.get('earth_orbit').get('period_min')
+        )
+        target_orbit_list = OrbitType(
+            orbits=entity.get('target_orbit').get('orbits'),
+            apoapsis_km=entity.get('target_orbit').get('apoapsis_km'),
+            periapsis_km=entity.get('target_orbit').get('periapsis_km'),
+            inclination_deg=entity.get('target_orbit').get('inclination_deg'),
+            period_min=entity.get('target_orbit').get('period_min')
+        )
         result.append(MissionType(
             mission=entity.get('mission'),
             astronauts=entity.get('astronauts'),
@@ -84,14 +111,13 @@ def missions_by_program(self, program: str) -> List[MissionType]:
             launch_site=entity.get('launch_site'),
             launch_site_coord=entity.get('launch_site_coord'),
             launch_vehicle=entity.get('launch_vehicle'),
-            orbits=entity.get('orbits'),
-            apogee_nmi=entity.get('apogee_nmi'),
-            perigee_nmi=entity.get('perigee_nmi'),
             landing_date_utc=entity.get('landing_date_utc'),
             landing_site=entity.get('landing_site'),
             landing_site_coord=entity.get('landing_site_coord'),
             recovery_ship=entity.get('recovery_ship'),
-            duration=duration_list
+            duration=duration_list,
+            earth_orbit=earth_orbit_list,
+            target_orbit=target_orbit_list
         ))
     return result
 

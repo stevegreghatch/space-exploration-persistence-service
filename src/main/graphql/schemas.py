@@ -4,6 +4,7 @@ from space_exploration_common_lib.model.Program import Program
 from space_exploration_common_lib.model.Duration import Duration
 from space_exploration_common_lib.model.Mission import Mission
 from space_exploration_common_lib.model.Astronaut import Astronaut
+from space_exploration_common_lib.model.Orbit import Orbit
 
 
 @strawberry.experimental.pydantic.type(model=Program, all_fields=True)
@@ -13,6 +14,11 @@ class ProgramType:
 
 @strawberry.experimental.pydantic.type(model=Duration, all_fields=True)
 class DurationType:
+    pass
+
+
+@strawberry.experimental.pydantic.type(model=Orbit, all_fields=True)
+class OrbitType:
     pass
 
 
