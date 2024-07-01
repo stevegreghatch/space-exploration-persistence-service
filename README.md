@@ -10,10 +10,6 @@ The Space Exploration Persistence Service acts as an intermediary, enabling effi
 
 To run the Space Exploration Persistence Service locally, you'll need to set it up alongside the Space Exploration Service and the Space Exploration UI.
 
-### Prerequisites
-
-- Ensure Docker is installed and running on your machine.
-
 ### Setup and Installation
 
 1. **Clone the Repository**:
@@ -23,17 +19,7 @@ To run the Space Exploration Persistence Service locally, you'll need to set it 
    cd space-exploration-persistence-service
    ```
 
-2. **Build the Docker Image**:
-
-   ```sh
-   docker build -t persistence-service:latest .
-   ```
-
-3. **Run the Docker Container**:
-
-   ```sh
-   docker run -d --network my-network -p 8000:8000 --name persistence-service persistence-service:latest
-   ```
+2. **Run app.py**
 
 ## Project Links
 
