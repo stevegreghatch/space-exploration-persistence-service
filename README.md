@@ -39,3 +39,4 @@ To run the Space Exploration Persistence Service locally, you'll need to set it 
 
 - **Data Service**: [Space Exploration Service](https://github.com/stevegreghatch/Space-Exploration)
 - **Frontend UI**: [Space Exploration UI](https://github.com/stevegreghatch/space-exploration-ui)
+- **Common Library**: [Space Exploration Common Library](https://github.com/stevegreghatch/space-exploration-common-lib)
