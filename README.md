@@ -21,6 +21,9 @@ To run the Space Exploration Persistence Service locally, you'll need to set it 
 
 2. **Run app.py**
 
+3. **Access Service**
+   - navigate to http://localhost:8080/docs
+
 ## Project Links
 
 - **Data Service**: [Space Exploration Service](https://github.com/stevegreghatch/Space-Exploration)
