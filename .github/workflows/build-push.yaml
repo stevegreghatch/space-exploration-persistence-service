@@ -53,9 +53,10 @@ jobs:
         run: |
           new_version="${{ steps.version.outputs.new_version }}"
           if git rev-parse --quiet --verify "refs/tags/${new_version}"; then
+            echo "Incrementing existing tag: ${new_version}"
             new_version=$(python -c "import semver; print(semver.bump_patch('${new_version}'))")
-            echo "Incrementing existing tag to: ${new_version}"
+          else
+            echo "Creating new tag: ${new_version}"
           fi
-          echo "Creating new tag: ${new_version}"
           git tag "${new_version}"
           git push origin "${new_version}"
