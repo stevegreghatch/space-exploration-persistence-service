@@ -63,12 +63,12 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git fetch --tags
-          existing_tag=$(git tag --list ${{ env.new_version }})
-          if [ -z "$existing_tag" ]; then
-            git tag ${{ env.new_version }}
-            git push origin ${{ env.new_version }}
+          if git rev-parse --verify --quiet ${new_version}; then
+            echo "Tag ${new_version} already exists."
+            new_version=$(python -c "import semver; print(semver.bump_patch('$new_version'))")
+            git tag $new_version
+            git push origin $new_version
           else
-            new_version=$(python -c "import semver; print(semver.bump_patch('$existing_tag'))")
             git tag $new_version
             git push origin $new_version
           fi
