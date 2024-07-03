@@ -59,15 +59,16 @@ jobs:
           docker push ${{ secrets.DOCKER_USERNAME }}/persistence-service:latest
 
       - name: Push new or updated tag
+        if: success()  # Only run this step if the previous steps were successful
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git fetch --tags
-          existing_tag=$(git tag --list "${new_version}")
-          if [ -z "$existing_tag" ]; then
+          new_version=$(cat $GITHUB_ENV | grep new_version | awk -F'=' '{print $2}')
+          if git rev-parse --quiet --verify "refs/tags/${new_version}"; then
+            echo "Tag ${new_version} already exists. Skipping tag creation."
+          else
             echo "Creating new tag: ${new_version}"
             git tag ${new_version}
             git push origin ${new_version}
-          else
-            echo "Tag ${new_version} already exists. Skipping tag creation."
           fi
