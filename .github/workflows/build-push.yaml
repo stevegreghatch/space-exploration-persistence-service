@@ -31,7 +31,11 @@ jobs:
           if [ -z "$latest_tag" ]; then
             new_version="0.0.1"
           else
-            new_version=$(python -c "import semver; print(semver.bump_patch('$latest_tag'))")
+            new_version="$latest_tag"
+            while git rev-parse --quiet --verify "refs/tags/${new_version}"; do
+              echo "Tag ${new_version} already exists. Incrementing..."
+              new_version=$(python -c "import semver; print(semver.bump_patch('${new_version}'))")
+            done
           fi
           echo "NEW_VERSION=$new_version" >> $GITHUB_ENV
 
@@ -52,9 +56,6 @@ jobs:
         if: success()
         run: |
           new_version="${{ env.NEW_VERSION }}"
-          while git rev-parse --quiet --verify "refs/tags/${new_version}"; do
-            new_version=$(python -c "import semver; print(semver.bump_patch('${new_version}'))")
-          done
           echo "Creating new tag: ${new_version}"
           git tag "${new_version}"
           git push origin "${new_version}"
