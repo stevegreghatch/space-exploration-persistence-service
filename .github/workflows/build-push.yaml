@@ -30,9 +30,12 @@ jobs:
       - name: Get latest tag
         id: version
         run: |
-          git fetch --tags
-          latest_tag=$(git describe --tags --abbrev=0)
-          new_version=$(python -c "import semver; print(semver.bump_patch('$latest_tag'))")
+          latest_tag=$(git tag --sort=-v:refname | head -n 1)
+          if [ -z "$latest_tag" ]; then
+            new_version="0.0.1"
+          else
+            new_version=$(python -c "import semver; print(semver.bump_patch('$latest_tag'))")
+          fi
           echo "new_version=$new_version" >> $GITHUB_ENV
 
       - name: Log in to Docker Hub
