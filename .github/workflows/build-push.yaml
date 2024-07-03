@@ -63,7 +63,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          new_version=$(cat $GITHUB_ENV | grep new_version | awk -F'=' '{print $2}')
+          new_version=$(echo "${{ env.new_version }}")
           if git rev-parse --quiet --verify "refs/tags/${new_version}"; then
             echo "Tag ${new_version} already exists. Skipping tag creation."
           else
