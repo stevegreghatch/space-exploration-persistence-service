@@ -30,7 +30,8 @@ jobs:
       - name: Get latest tag
         id: version
         run: |
-          latest_tag=$(git tag --sort=-v:refname | head -n 1)
+          git fetch --tags
+          latest_tag=$(git describe --tags --abbrev=0 2>/dev/null || echo "")
           if [ -z "$latest_tag" ]; then
             new_version="0.0.1"
           else
@@ -62,11 +63,11 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git fetch --tags
-          existing_tag=$(git tag --list $new_version)
+          existing_tag=$(git tag --list "${new_version}")
           if [ -z "$existing_tag" ]; then
-            echo "Creating new tag: $new_version"
-            git tag $new_version
-            git push origin $new_version
+            echo "Creating new tag: ${new_version}"
+            git tag ${new_version}
+            git push origin ${new_version}
           else
-            echo "Tag $new_version already exists. Skipping tag creation."
+            echo "Tag ${new_version} already exists. Skipping tag creation."
           fi
