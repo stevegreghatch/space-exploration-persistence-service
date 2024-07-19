@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: api-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/health-check-path: "/health"
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: api-persistence.history-from-the-frontier.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: persistence-service
+                port:
+                  number: 8081
