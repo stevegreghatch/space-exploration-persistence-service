@@ -17,3 +17,7 @@ spec:
                 name: persistence-service
                 port:
                   number: 8081
+  tls:
+    - hosts:
+        - "*.history-from-the-frontier.com"
+      secretName: wildcard-certificate-tls
