@@ -14,6 +14,6 @@ spec:
         pathType: Prefix
         backend:
           service:
-            name: api-persistence
+            name: persistence-service
             port:
               number: 8081
