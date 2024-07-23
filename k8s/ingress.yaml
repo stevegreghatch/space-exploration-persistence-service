@@ -4,7 +4,7 @@ metadata:
   name: api-persistence-ingress
   annotations:
     nginx.ingress.kubernetes.io/health-check-path: "/health"
-    cert-manager.io/cluster-issuer: "letsencrypt-prod"
+    networking.gke.io/managed-certificates: "api-persistence-certificate"
 spec:
   rules:
   - host: "api-persistence.history-from-the-frontier.com"
@@ -17,7 +17,3 @@ spec:
             name: api-persistence
             port:
               number: 8081
-  tls:
-  - hosts:
-    - "api-persistence.history-from-the-frontier.com"
-    secretName: api-persistence-certificate-tls
