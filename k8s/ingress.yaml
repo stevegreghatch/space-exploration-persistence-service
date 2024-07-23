@@ -16,7 +16,7 @@ spec:
           service:
             name: api-persistence
             port:
-              number: 80
+              number: 8081
   tls:
   - hosts:
     - "api-persistence.history-from-the-frontier.com"
