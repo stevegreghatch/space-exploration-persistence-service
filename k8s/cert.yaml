@@ -1,8 +1,0 @@
-apiVersion: networking.gke.io/v1
-kind: ManagedCertificate
-metadata:
-  name: managed-cert-persistence
-spec:
-  domains:
-    - api-persistence.history-from-the-frontier.com
-    - www.api-persistence.history-from-the-frontier.com
