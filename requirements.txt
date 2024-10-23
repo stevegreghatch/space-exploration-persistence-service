@@ -1,10 +1,10 @@
-setuptools~=72.1.0
-fastapi~=0.112.0
-uvicorn~=0.30.5
-pydantic~=2.8.2
-pymongo~=4.8.0
-strawberry-graphql[fastapi]~=0.237.3
-graphql-core~=3.2.3
+setuptools~=75.2.0
+fastapi~=0.115.3
+uvicorn~=0.32.0
+pydantic~=2.9.2
+pymongo~=4.10.1
+strawberry-graphql[fastapi]~=0.247.0
+graphql-core~=3.2.5
 python-dotenv~=1.0.1
 
 space-exploration-common-lib==0.0.59
